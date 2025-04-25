@@ -1,0 +1,132 @@
+{% extends 'base.html' %}
+{% block title %}Analiz Sayfası{% endblock %}
+
+{% block content %}
+<style>
+    .analysis-container {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        padding-top: 100px;
+        background-color: #f7f9fb;
+        font-family: 'Segoe UI', sans-serif;
+    }
+
+    h2 {
+        margin: 30px 0 10px;
+        color: #223;
+    }
+
+    .summary-flex {
+        display: flex;
+        justify-content: center;
+        gap: 50px;
+        flex-wrap: wrap;
+        margin-bottom: 30px;
+    }
+
+    .chart-box {
+        text-align: center;
+    }
+
+    table.analysis-table {
+        border-collapse: collapse;
+        box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        background-color: #fff;
+        min-width: 300px;
+    }
+
+    table.analysis-table th, table.analysis-table td {
+        padding: 12px 18px;
+        border: 1px solid #ccc;
+        text-align: center;
+        font-size: 16px;
+    }
+
+    table.analysis-table th {
+        background-color: #f0f0f0;
+        font-weight: bold;
+        color: #333;
+    }
+
+    .totals-list {
+        list-style: none;
+        padding: 0;
+        font-size: 17px;
+    }
+
+    .totals-list li {
+        margin: 5px 0;
+    }
+
+    .totals-list strong {
+        width: 120px;
+        display: inline-block;
+    }
+
+    .section-divider {
+        border-top: 2px solid #ccc;
+        margin: 40px 0 20px;
+        width: 80%;
+    }
+
+    .pie-chart-img {
+        max-width: 300px;
+        border: 2px solid #ddd;
+        border-radius: 10px;
+        box-shadow: 0 2px 6px rgba(0,0,0,0.15);
+        margin-top: 10px;
+    }
+</style>
+
+<div class="analysis-container" style="padding-bottom:100px;">
+
+    <h2>📊 Genel Özet</h2>
+
+    <div class="summary-flex">
+        <!-- Sol: Genel Tablo -->
+        <table class="analysis-table">
+            <tr><th>Toplam Test</th><td>{{ results|length }}</td></tr>
+            <tr><th>Toplam Soru</th><td>{{ totals.total_questions }}</td></tr>
+            <tr><th>Toplam Doğru</th><td style="color:green;">{{ totals.total_correct }}</td></tr>
+            <tr><th>Toplam Yanlış</th><td style="color:red;">{{ totals.total_wrong }}</td></tr>
+        </table>
+
+        <!-- Sağ: Pie Chart -->
+        <div class="chart-box">
+            <img src="data:image/png;base64,{{ pie_chart_base64 }}" alt="Pie Chart" class="pie-chart-img" style="max-width: 280px;">
+        </div>
+    </div>
+
+    <div class="section-divider"></div>
+
+    <h2>📘 Test Geçmişi</h2>
+    <table class="analysis-table">
+        <tr>
+            <th>Tarih</th>
+            <th>Soru</th>
+            <th>Doğru</th>
+            <th>Yanlış</th>
+        </tr>
+        {% for result in results %}
+        <tr>
+            <td>{{ result.date_taken|date:"Y-m-d H:i" }}</td>
+            <td>{{ result.total_questions }}</td>
+            <td style="color:green;">{{ result.total_correct }}</td>
+            <td style="color:red;">{{ result.total_wrong }}</td>
+        </tr>
+        {% endfor %}
+    </table>
+
+    <div class="section-divider"></div>
+    <div class="chart-box">
+        <h3>📊 Türlere Göre Başarı Yüzdesi</h3>
+        <img src="data:image/png;base64,{{ bar_chart_base64 }}" alt="Bar Chart" class="pie-chart-img" style="max-width: 600px;">
+    </div>
+    <div style="margin-bottom: 30px;  margin-top: 30px;">
+        <a href="{% url 'exam_analysis_pdf' %}" class="button" style="padding: 10px 20px; background-color: #2563eb; color: white; border-radius: 6px; text-decoration: none;">📄 PDF Olarak İndir</a>
+    </div>    
+    
+</div>
+{% endblock %}
+    

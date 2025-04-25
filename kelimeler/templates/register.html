@@ -1,0 +1,29 @@
+{% extends 'base.html' %}
+{% block title %}Kayıt Ol{% endblock %}
+
+{% block content %}
+<div class="container">
+    <h2>Kayıt Ol</h2>
+
+    {% if messages %}
+      {% for msg in messages %}
+        <div class="flash {{ msg.tags }}">{{ msg }}</div>
+      {% endfor %}
+    {% endif %}
+
+    <form method="POST">
+        {% csrf_token %}
+        <label>Kullanıcı Adı:</label>
+        <input type="text" name="username">
+
+        <label>Şifre:</label>
+        <input type="password" name="password">
+
+        <input type="submit" value="Kayıt Ol">
+    </form>
+
+    <div class="form-links">
+        <a href="{% url 'login' %}">Zaten hesabın var mı? Giriş yap</a>
+    </div>
+</div>
+{% endblock %}

@@ -1,0 +1,20 @@
+{% extends 'base.html' %}
+{% block title %}Soru {{ index }} / {{ total }}{% endblock %}
+
+{% block content %}
+<div class="container">
+    <h2>🧠 Soru {{ index }} / {{ total }}</h2>
+
+    <form method="POST" action="{% url 'quiz_submit' %}">
+        {% csrf_token %}
+        <p><strong>{{ word.eng_word }}</strong> kelimesinin Türkçesi nedir?</p>
+
+        <input type="text" name="word_{{ word.id }}" placeholder="Türkçe karşılığı" required>
+
+        <input type="hidden" name="progress_id" value="{{ progress.id }}">
+
+        <br><br>
+        <input type="submit" value="{% if index == total %}Bitir{% else %}Sonraki{% endif %}">
+    </form>
+</div>
+{% endblock %}

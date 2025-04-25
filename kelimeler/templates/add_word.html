@@ -1,0 +1,108 @@
+{% extends 'base.html' %}
+{% block title %}Kelime Ekle{% endblock %}
+
+{% block content %}
+<div class="container">
+    <h2>Kelime Ekle</h2>
+
+    {% if messages %}
+      {% for msg in messages %}
+        <div class="flash {{ msg.tags }}">{{ msg }}</div>
+        {% if msg.tags == 'success' %}
+        <script>
+            setTimeout(function () {
+                window.location.href = "{% url 'menu' %}";
+            }, 2000);
+        </script>
+        {% endif %}
+      {% endfor %}
+    {% endif %}
+
+    <form method="POST" enctype="multipart/form-data">
+        {% csrf_token %}
+
+        <input type="text" name="eng_word" placeholder="İngilizce Kelime" required><br>
+        <input type="text" name="tur_word" placeholder="Türkçe Karşılığı" required><br>
+
+        <!-- ✅ Kelime Türü Dropdown -->
+        <label>Kelime Türü:</label><br>
+        <select name="word_type" required>
+            <option value="noun">İsim (noun)</option>
+            <option value="verb">Fiil (verb)</option>
+            <option value="adjective">Sıfat (adjective)</option>
+            <option value="adverb">Zarf (adverb)</option>
+            <option value="other">Diğer</option>
+        </select><br><br>
+
+        <label>📷 Resim Yükle (Opsiyonel):</label><br>
+        <input type="file" name="picture" accept="image/*"><br><br>
+
+        <label>🎤 Ses Kaydet (max 5 sn, Opsiyonel):</label><br>
+        <button type="button" onclick="startRecording()">Kaydı Başlat</button>
+        <button type="button" onclick="stopRecording()">Kaydı Bitir</button>
+        <input type="hidden" name="audio_blob" id="audio_blob"><br><br>
+        <audio id="audioPreview" controls style="display:none;"></audio><br>
+
+        <div id="sample-container">
+            <input type="text" name="samples" placeholder="Örnek Cümle" required><br>
+        </div>
+        <button type="button" onclick="addSample()">+ Cümle Ekle</button><br><br>
+
+        <input type="submit" value="Kelimeyi Ekle">
+    </form>
+</div>
+
+<script>
+let mediaRecorder;
+let audioChunks = [];
+
+function startRecording() {
+    navigator.mediaDevices.getUserMedia({ audio: true })
+        .then(stream => {
+            mediaRecorder = new MediaRecorder(stream);
+            audioChunks = [];
+
+            mediaRecorder.ondataavailable = event => {
+                audioChunks.push(event.data);
+            };
+
+            mediaRecorder.onstop = () => {
+                const audioBlob = new Blob(audioChunks, { type: 'audio/wav' });
+
+                const reader = new FileReader();
+                reader.readAsDataURL(audioBlob);
+                reader.onloadend = function () {
+                    document.getElementById("audio_blob").value = reader.result;
+
+                    const audioPreview = document.getElementById("audioPreview");
+                    audioPreview.src = reader.result;
+                    audioPreview.style.display = "block";
+                };
+            };
+
+            mediaRecorder.start();
+            setTimeout(() => {
+                if (mediaRecorder.state === "recording") {
+                    mediaRecorder.stop();
+                }
+            }, 5000);
+        });
+}
+
+function stopRecording() {
+    if (mediaRecorder && mediaRecorder.state === "recording") {
+        mediaRecorder.stop();
+    }
+}
+
+function addSample() {
+    const container = document.getElementById('sample-container');
+    const input = document.createElement('input');
+    input.type = 'text';
+    input.name = 'samples';
+    input.placeholder = 'Ekstra Cümle';
+    container.appendChild(input);
+    container.appendChild(document.createElement('br'));
+}
+</script>
+{% endblock %}

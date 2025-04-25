@@ -1,0 +1,34 @@
+{% extends 'base.html' %}
+{% block title %}📝 Sonuçlar{% endblock %}
+
+{% block content %}
+<div class="container">
+    <h2>📝 Sınav Sonuçları</h2>
+
+    <table style="width:100%; border-collapse: collapse;">
+        <tr style="border-bottom: 1px solid #ccc;">
+            <th>Kelime</th>
+            <th>Senin Cevabın</th>
+            <th>Doğru Cevap</th>
+            <th>Durum</th>
+        </tr>
+        {% for item in results %}
+        <tr>
+            <td>{{ item.eng_word }}</td>
+            <td>{{ item.user_input }}</td>
+            <td>{{ item.tur_word }}</td>
+            <td>
+                {% if item.is_correct %}
+                    ✅ Doğru
+                {% else %}
+                    ❌ Yanlış
+                {% endif %}
+            </td>
+        </tr>
+        {% endfor %}
+    </table>
+
+    <br>
+    <a href="{% url 'menu' %}">Ana Menüye Dön</a>
+</div>
+{% endblock %}

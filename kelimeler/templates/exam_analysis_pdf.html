@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <style>
+        body { font-family: DejaVu Sans, sans-serif; padding: 20px; background: #f7f9fb; }
+        h2, h3 { color: #223; margin-top: 20px; }
+        table {
+            width: 100%; border-collapse: collapse; margin-bottom: 20px;
+        }
+        th, td {
+            border: 1px solid #ccc; padding: 10px; text-align: center;
+        }
+        th {
+            background-color: #f0f0f0; font-weight: bold;
+        }
+        .charts {
+            display: flex; justify-content: space-between; margin-top: 20px;
+        }
+        .chart {
+            width: 48%;
+            text-align: center;
+        }
+        .chart img {
+            width: 100%; max-width: 300px;
+            border: 1px solid #ccc;
+        }
+    </style>
+</head>
+<body>
+    <h2>📊 Genel Özet</h2>
+    <table>
+        <tr><th>Toplam Test</th><td>{{ results|length }}</td></tr>
+        <tr><th>Toplam Soru</th><td>{{ totals.total_questions }}</td></tr>
+        <tr><th>Toplam Dogru</th><td style="color:green;">{{ totals.total_correct }}</td></tr>
+        <tr><th>Toplam Yanlis</th><td style="color:red;">{{ totals.total_wrong }}</td></tr>
+    </table>
+
+    <div class="charts">
+        <div class="chart">
+            <h3>Dogru/Yanlis Dagilimi</h3>
+            <img src="data:image/png;base64,{{ pie_chart_base64 }}" />
+        </div>
+        <div class="chart">
+            <h3>Kelime Turlerine Gore Basari</h3>
+            <img src="data:image/png;base64,{{ bar_chart_base64 }}" />
+        </div>
+    </div>
+
+    <h2>📘 Test Gecmisi</h2>
+    <table>
+        <tr><th>Tarih</th><th>Soru</th><th>Dogru</th><th>Yanlis</th></tr>
+        {% for result in results %}
+        <tr>
+            <td>{{ result.date_taken|date:"Y-m-d H:i" }}</td>
+            <td>{{ result.total_questions }}</td>
+            <td>{{ result.total_correct }}</td>
+            <td>{{ result.total_wrong }}</td>
+        </tr>
+        {% endfor %}
+    </table>
+</body>
+</html>

@@ -1,0 +1,14 @@
+{% extends 'base.html' %}
+{% block title %}🧠 Sınava Başla{% endblock %}
+
+{% block content %}
+<div class="container">
+    <h2>🧠 Günlük Sınav</h2>
+    <form method="POST">
+        {% csrf_token %}
+        <label>Bu sınavda kaç kelime sorulsun?</label><br>
+        <input type="number" name="question_limit" min="1" max="50" required><br><br>
+        <input type="submit" value="Sınava Başla">
+    </form>
+</div>
+{% endblock %}

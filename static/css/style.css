@@ -1,0 +1,132 @@
+/* Header */
+header {
+    background-color: #1e3a8a;
+    padding: 0px 0;
+    color: white;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+    width: 100%;
+    position: fixed;
+    top: 0;
+    z-index: 1000;
+}
+
+.header-container {
+    max-width: 1000px;
+    margin: 0 auto;
+    padding: 0 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+nav a {
+    color: white;
+    text-decoration: none;
+    margin-left: 20px;
+    font-weight: 500;
+}
+
+nav a:hover {
+    text-decoration: underline;
+}
+
+/* Genel yapı */
+body {
+    margin: 0;
+    padding: 0;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: #f4f6f8;
+    display: flex;
+    justify-content: center; /* yatay ortalama */
+    align-items: center;     /* dikey ortalama */
+    min-height: 100vh;
+    box-sizing: border-box;
+    flex-direction: column;
+}
+
+/* Ortalanmış ana kutu */
+.container {
+    background: white;
+    padding: 30px 30px;
+    border-radius: 12px;
+    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
+    width: 100%;
+    max-width: 360px;
+    margin: 120px auto 30px auto;  /* 👈 üst 100px, alt 60px */
+}
+
+/* Form elemanları */
+form input[type="text"],
+form input[type="password"] {
+    width: 100%;
+    padding: 10px;
+    margin: 8px 0;
+    border: 1px solid #d1d5db;
+    border-radius: 6px;
+    box-sizing: border-box;
+    background-color: #f9fafb;
+}
+
+form input[type="submit"],
+form button {
+    width: 100%;
+    padding: 10px;
+    background-color: #2563eb;
+    color: white;
+    border: none;
+    border-radius: 6px;
+    font-weight: bold;
+    cursor: pointer;
+    margin-top: 16px;
+    transition: background-color 0.3s;
+}
+
+form input[type="submit"]:hover,
+form button:hover {
+    background-color: #1d4ed8;
+}
+
+/* Linkler */
+a {
+    color: #2563eb;
+    text-decoration: none;
+    font-size: 14px;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
+/* Alt link düzeni */
+.form-links {
+    text-align: center;
+    margin-top: 14px;
+}
+
+/* Flash mesajlar */
+.flash.success {
+    background-color: #d1fae5;
+    border: 1px solid #10b981;
+    color: #065f46;
+    padding: 10px;
+    margin-bottom: 15px;
+    border-radius: 6px;
+    font-weight: bold;
+    text-align: center;
+}
+
+.flash.danger {
+    background-color: #fee2e2;
+    border: 1px solid #dc2626;
+    color: #7f1d1d;
+    padding: 10px;
+    margin-bottom: 15px;
+    border-radius: 6px;
+    font-weight: bold;
+    text-align: center;
+}
+
+h2 {
+    margin: 30px 0 10px;
+    color: #223;
+}

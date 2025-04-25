@@ -1,0 +1,31 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <title>{% block title %}Kelime Ezberleme{% endblock %}</title>
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+</head>
+<body>
+
+<header>
+  <div class="header-container">
+    <h1 class="logo">Ezberleme</h1>
+    <nav>
+        {% if request.session.username %}
+          <a href="{% url 'menu' %}">Menü</a>
+          <a href="{% url 'logout' %}">Çıkış</a>
+        {% else %}
+          <a href="{% url 'login' %}">Giriş</a>
+          <a href="{% url 'register' %}">Kayıt</a>
+        {% endif %}
+    </nav>
+  </div>
+</header>
+
+{% block content %}
+<!-- Sayfa içeriği burada yer alır -->
+{% endblock %}
+
+</body>
+</html>

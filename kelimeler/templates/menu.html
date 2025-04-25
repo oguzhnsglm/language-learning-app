@@ -1,0 +1,20 @@
+{% extends 'base.html' %}
+{% block title %}Ana Menü{% endblock %}
+
+{% block content %}
+<div class="container">
+    <h2>Hoş Geldin, {{ username }}</h2>
+
+    <p>Kelime ezberleme sistemine giriş yaptınız.</p>
+
+    <ul style="list-style: none; padding: 0; text-align: center;">
+        <li><a href="{% url 'add_word' %}">📥 Kelime Ekle</a></li>
+        <li><a href="{% url 'quiz' %}">🧠 Sınava Gir</a></li>
+        <li><a href="{% url 'exam_analysis' %}">📊 Analiz Sayfası</a></li>  <!-- 🔹 Yeni Eklendi -->
+    </ul>
+
+    <div class="form-links">
+        <a href="{% url 'logout' %}">Çıkış Yap</a>
+    </div>
+</div>
+{% endblock %}
