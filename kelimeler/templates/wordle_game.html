@@ -49,8 +49,8 @@
     <h2>🎯 Wordle Bulmaca</h2>
     <p>{{ word|length }} harfli doğru kelimeyi tahmin etmeye çalış!</p>
 
-    <!-- 🔥 Style içinde dinamik grid -->
-    <div id="board" class="wordle-board" style="grid-template-columns: repeat({{ word|length }}, 60px);"></div>
+    <!-- 🛠 Burada inline style kaldırıldı -->
+    <div id="board" class="wordle-board"></div>
 
     <input type="text" id="guessInput" maxlength="{{ word|length }}" style="margin-top: 20px;" autofocus>
     <button onclick="submitGuess()">Tahmin Et</button>
@@ -61,6 +61,12 @@
 <script>
     const targetWord = "{{ word|upper }}";
     let attempts = 0;
+
+    window.onload = function() {
+        // 🛠 Board'ın kolonlarını dinamik olarak ayarla
+        const board = document.getElementById("board");
+        board.style.gridTemplateColumns = `repeat(${targetWord.length}, 60px)`;
+    };
 
     function submitGuess() {
         const input = document.getElementById("guessInput");
