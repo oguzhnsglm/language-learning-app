@@ -1,6 +1,6 @@
-<!DOCTYPE html>
-<html lang="tr">
-<head>
+{% block title %}Analiz Sayfasi{% endblock %}
+
+{% block content %}
     <meta charset="UTF-8">
     <style>
         body { font-family: DejaVu Sans, sans-serif; padding: 20px; background: #f7f9fb; }
@@ -26,7 +26,6 @@
             border: 1px solid #ccc;
         }
     </style>
-</head>
 <body>
     <h2>📊 Genel Özet</h2>
     <table>
@@ -61,3 +60,4 @@
     </table>
 </body>
 </html>
+{% endblock %}

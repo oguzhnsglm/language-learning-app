@@ -160,7 +160,7 @@ def quiz_view(request):
         priority_words = list(Word.objects.filter(
             user_id=user_id,
             is_correct=True,
-            next_show_date=today
+            next_show_date__lte=today
         ).order_by('?')[:question_limit])
 
         # 2️⃣ Eksik kalan sayıyı yanlış bilinenlerden doldur

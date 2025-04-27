@@ -58,13 +58,6 @@ class Word(models.Model):
         self.is_correct = False
         self.save()
 
-    @classmethod
-    def filter(cls):
-        today = date.today()
-        return cls.objects.filter(
-            models.Q(is_correct=False) | models.Q(is_correct=True, next_show_date=today)
-        )
-
 class ExamResult(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE)
     date_taken = models.DateTimeField(auto_now_add=True)
