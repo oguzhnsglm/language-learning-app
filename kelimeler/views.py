@@ -473,18 +473,17 @@ def exam_analysis_pdf(request):
 
 
 
+import secrets
+from django.views.decorators.http import require_GET
 from django.shortcuts import render, redirect
-from django.views.decorators.http import require_GET  # 🛠 bunu ekledik
 from .models import Word
-import random
 
-@require_GET  # 🛠 sadece GET isteğine izin veriyoruz
+@require_GET
 def wordle_game(request):
     user_id = request.session.get("user_id")
     if not user_id:
         return redirect("login")
 
-    # Kullanıcının doğru bildiği kelimeleri çek
     words = list(
         Word.objects.filter(user_id=user_id, is_correct=True)
         .values_list("eng_word", flat=True)
@@ -493,8 +492,7 @@ def wordle_game(request):
     if not words:
         return render(request, "wordle_game.html", {"error": "Henüz yeterli doğru bilinen kelimeniz yok."})
 
-    # Her zaman rastgele bir kelime seç (her sayfa yenilendiğinde yeni kelime)
-    target_word = random.choice(words).upper()
+    # Güvenli rastgele kelime seçimi
+    target_word = secrets.choice(words).upper()
 
     return render(request, "wordle_game.html", {"word": target_word})
-
