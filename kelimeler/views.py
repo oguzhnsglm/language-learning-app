@@ -471,14 +471,14 @@ def exam_analysis_pdf(request):
     pisa.CreatePDF(BytesIO(html.encode("utf-8")), dest=response, encoding="utf-8")
     return response
 
-import random
-from django.shortcuts import render, redirect
-from .models import Word
 
-import random
-from django.shortcuts import render, redirect
-from .models import Word
 
+from django.shortcuts import render, redirect
+from django.views.decorators.http import require_GET  # 🛠 bunu ekledik
+from .models import Word
+import random
+
+@require_GET  # 🛠 sadece GET isteğine izin veriyoruz
 def wordle_game(request):
     user_id = request.session.get("user_id")
     if not user_id:
@@ -497,3 +497,4 @@ def wordle_game(request):
     target_word = random.choice(words).upper()
 
     return render(request, "wordle_game.html", {"word": target_word})
+
