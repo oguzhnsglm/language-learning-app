@@ -470,3 +470,30 @@ def exam_analysis_pdf(request):
     response["Content-Disposition"] = 'attachment; filename="analiz_raporu.pdf"'
     pisa.CreatePDF(BytesIO(html.encode("utf-8")), dest=response, encoding="utf-8")
     return response
+
+import random
+from django.shortcuts import render, redirect
+from .models import Word
+
+import random
+from django.shortcuts import render, redirect
+from .models import Word
+
+def wordle_game(request):
+    user_id = request.session.get("user_id")
+    if not user_id:
+        return redirect("login")
+
+    # Kullanıcının doğru bildiği kelimeleri çek
+    words = list(
+        Word.objects.filter(user_id=user_id, is_correct=True)
+        .values_list("eng_word", flat=True)
+    )
+
+    if not words:
+        return render(request, "wordle_game.html", {"error": "Henüz yeterli doğru bilinen kelimeniz yok."})
+
+    # Her zaman rastgele bir kelime seç (her sayfa yenilendiğinde yeni kelime)
+    target_word = random.choice(words).upper()
+
+    return render(request, "wordle_game.html", {"word": target_word})

@@ -1,0 +1,103 @@
+{% extends 'base.html' %}
+{% block title %}Wordle Bulmaca{% endblock %}
+
+{% block content %}
+<style>
+    .wordle-board {
+        display: grid;
+        grid-template-columns: repeat(5, 60px);
+        grid-gap: 10px;
+        justify-content: center;
+        margin: 30px auto;
+    }
+
+    .cell {
+        width: 60px;
+        height: 60px;
+        font-size: 24px;
+        text-transform: uppercase;
+        text-align: center;
+        border: 2px solid #ccc;
+        line-height: 60px;
+        font-weight: bold;
+    }
+
+    .correct {
+        background-color: #10B981;
+        color: white;
+    }
+
+    .present {
+        background-color: #F59E0B;
+        color: white;
+    }
+
+    .absent {
+        background-color: #9CA3AF;
+        color: white;
+    }
+
+    #message {
+        text-align: center;
+        font-size: 18px;
+        margin-top: 20px;
+        font-weight: bold;
+    }
+</style>
+
+<div class="container" style="text-align: center;">
+    <h2>🎯 Wordle Bulmaca</h2>
+    <p>{{ word|length }} harfli doğru kelimeyi tahmin etmeye çalış!</p>
+
+    <!-- 🔥 Style içinde dinamik grid -->
+    <div id="board" class="wordle-board" style="grid-template-columns: repeat({{ word|length }}, 60px);"></div>
+
+    <input type="text" id="guessInput" maxlength="{{ word|length }}" style="margin-top: 20px;" autofocus>
+    <button onclick="submitGuess()">Tahmin Et</button>
+
+    <div id="message"></div>
+</div>
+
+<script>
+    const targetWord = "{{ word|upper }}";
+    let attempts = 0;
+
+    function submitGuess() {
+        const input = document.getElementById("guessInput");
+        const guess = input.value.toUpperCase();
+
+        if (guess.length !== targetWord.length) {
+            alert(targetWord.length + " harfli bir kelime girin!");
+            return;
+        }
+
+        const board = document.getElementById("board");
+        for (let i = 0; i < guess.length; i++) {
+            const cell = document.createElement("div");
+            cell.className = "cell";
+
+            if (guess[i] === targetWord[i]) {
+                cell.classList.add("correct");
+            } else if (targetWord.includes(guess[i])) {
+                cell.classList.add("present");
+            } else {
+                cell.classList.add("absent");
+            }
+
+            cell.textContent = guess[i];
+            board.appendChild(cell);
+        }
+
+        attempts++;
+        input.value = "";
+
+        if (guess === targetWord) {
+            document.getElementById("message").innerText = `🎉 Tebrikler! ${attempts} denemede buldun.`;
+            input.disabled = true;
+        } else if (attempts >= 5) {
+            document.getElementById("message").innerText = `😢 Hakkınız bitti. Doğru kelime: ${targetWord}`;
+            input.disabled = true;
+        }
+    }
+</script>
+{% endblock %}
