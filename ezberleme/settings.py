@@ -30,7 +30,11 @@ MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 import os
 
 # Güvenli key
-SECRET_KEY = os.getenv('DJANGO_SECRET_KEY', 'django-insecure-default-key')
+# SECURITY WARNING: keep the secret key used in production secret!
+SECRET_KEY = os.getenv('DJANGO_SECRET_KEY')
+
+if not SECRET_KEY:
+    raise ValueError("❌ DJANGO_SECRET_KEY environment variable is not set! Please define it.")
 
 # DEBUG kontrolü
 DEBUG = os.getenv('DJANGO_DEBUG', 'True') == 'True'
