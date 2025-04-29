@@ -1,20 +1,40 @@
-{% extends 'base.html' %}
+{% extends "base.html" %}
 {% block title %}Soru {{ index }} / {{ total }}{% endblock %}
 
 {% block content %}
-<div class="container">
-    <h2>🧠 Soru {{ index }} / {{ total }}</h2>
+<div class="container py-4">
+    <h2 class="mb-4">🧠 Soru {{ index }} / {{ total }}</h2>
 
+    {# ── 1. Resim ── #}
+    {% if word.picture %}
+        <div class="text-center mb-3">
+            <img src="{{ word.picture.url }}"
+                 alt="{{ word.eng_word }}"
+                 class="img-fluid rounded shadow-sm"
+                 style="max-height:240px;">
+        </div>
+    {% endif %}
+
+    {# ── 2. Soru ve örnek cümle ── #}
+    <p><strong>{{ word.eng_word }}</strong> kelimesinin Türkçesi nedir?</p>
+
+    {% if sample %}
+        <p class="fst-italic">Örnek Cümle: {{ sample }}</p>
+    {% endif %}
+
+    {# ── 3. Cevap formu ── #}
     <form method="POST" action="{% url 'quiz_submit' %}">
         {% csrf_token %}
-        <p><strong>{{ word.eng_word }}</strong> kelimesinin Türkçesi nedir?</p>
+        <input type="text"
+               name="word_{{ word.id }}"
+               class="form-control mb-3"
+               placeholder="Türkçe karşılığı"
+               autocomplete="off"
+               required>
 
-        <input type="text" name="word_{{ word.id }}" placeholder="Türkçe karşılığı" required>
-
-        <input type="hidden" name="progress_id" value="{{ progress.id }}">
-
-        <br><br>
-        <input type="submit" value="{% if index == total %}Bitir{% else %}Sonraki{% endif %}">
+        <button type="submit" class="btn btn-primary w-100">
+            {% if index == total %}Bitir{% else %}Sonraki{% endif %}
+        </button>
     </form>
 </div>
 {% endblock %}

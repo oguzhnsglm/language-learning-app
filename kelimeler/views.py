@@ -195,12 +195,16 @@ def quiz_question(request):
 
     word_id = ids[index]
     word = Word.objects.get(id=word_id)
-    
+
+    samples = word.samples  # Örnek cümleler geliyor
+
     return render(request, 'quiz_question.html', {
         'word': word,
         'index': index + 1,
-        'total': len(ids)
+        'total': len(ids),
+        'samples': samples  # samples'ı da şablona gönderiyoruz
     })
+
 
 
 from datetime import date

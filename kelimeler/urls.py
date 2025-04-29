@@ -1,5 +1,7 @@
 from django.urls import path
 from . import views
+from django.conf import settings
+from django.conf.urls.static import static
 
 urlpatterns = [
     path('', views.anasayfa, name='anasayfa'),
@@ -17,3 +19,14 @@ urlpatterns = [
     path('analysis/pdf/', views.exam_analysis_pdf, name='exam_analysis_pdf'),
     path('wordle/', views.wordle_game, name='wordle_game'),
 ]
+
+# Geliştirme ortamında statik ve medya dosyalarını servis et
+if settings.DEBUG:
+    urlpatterns += static(
+        settings.MEDIA_URL,
+        document_root=settings.MEDIA_ROOT
+    )
+    urlpatterns += static(
+        settings.STATIC_URL,
+        document_root=settings.STATICFILES_DIRS[0]
+    )
