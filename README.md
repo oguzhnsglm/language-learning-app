@@ -7,7 +7,7 @@ Bu Django projesi, kullanıcıların İngilizce kelimeleri **örnek cümle + gö
 ## 🎯 Amaç  
 - Görsel / işitsel öğelerle kelime ezberini kolaylaştırmak  
 - Öğrenme sürecini kaydedip istatistiklemek  
-- Sınavlarla beceriyi ölçmek, Wordle oyunuyla pekiştirmek  
+- Sınavlarla beceriyi ölçmek, Wordle oyunuyla pekiştirmek
 
 ---
 
