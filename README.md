@@ -58,35 +58,35 @@ python manage.py createsuperuser
 
 ## 🧪 Özelliklerin Kullanımı
 1. Kelime Ekleme
-Giriş yaptıktan sonra kelime ekleyebilir,
+  Giriş yaptıktan sonra kelime ekleyebilir,
 
-Kelimeye örnek cümle, ses ve resim ekleyebilirsiniz.
+  Kelimeye örnek cümle, ses ve resim ekleyebilirsiniz.
 
 2. Quiz Modülü
-Daha önce öğrenilen kelimelerden sınav oluşturulur.
+  Daha önce öğrenilen kelimelerden sınav oluşturulur.
 
-Her sınav sonucunda doğru/yanlış analizi sunulur.
+  Her sınav sonucunda doğru/yanlış analizi sunulur.
 
 3. Analiz Sayfası
-Genel başarı tablosu
+  Genel başarı tablosu
 
-Kelime türlerine göre (verb, noun, vb.) başarı yüzdesi
+  Kelime türlerine göre (verb, noun, vb.) başarı yüzdesi
 
-PDF olarak çıktısı alınabilir
+  PDF olarak çıktısı alınabilir
 
 4. PDF Raporlama
-Analiz sayfasından 📄 PDF Olarak İndir butonu ile kullanıcıya özel analiz raporu alınabilir.
+  Analiz sayfasından 📄 PDF Olarak İndir butonu ile kullanıcıya özel analiz raporu alınabilir.
 
-Pie chart ve bar chart görselleri dahil olur.
+  Pie chart ve bar chart görselleri dahil olur.
 
 5. Wordle Modülü
-Wordle Bulmaca oyununda yalnızca kullanıcının doğru bildiği kelimeler kullanılır.
+  Wordle Bulmaca oyununda yalnızca kullanıcının doğru bildiği kelimeler kullanılır.
 
-Her seferinde rastgele kelime seçilir.
+  Her seferinde rastgele kelime seçilir.
 
-Harf uzunluğu sınırlı değildir (dinamik yapıdadır).
+  Harf uzunluğu sınırlı değildir (dinamik yapıdadır).
 
-Renkli geri bildirimlerle harf tahmini yapılır.
+  Renkli geri bildirimlerle harf tahmini yapılır.
 
 ---
 
