@@ -35,6 +35,7 @@ python -m venv venv            # isteğe bağlı sanal ortam
 source venv/bin/activate       # Windows: venv\Scripts\activate
 pip install -r requirements.txt
 
+---
 
 ##🔐 Ortam Değişkenleri
 
@@ -43,7 +44,7 @@ export DJANGO_DEBUG=True
 export DJANGO_ALLOWED_HOSTS=127.0.0.1,localhost
 python manage.py runserver
 
-
+---
 
 
 ##🛠 Geliştirici Talimatları
@@ -52,6 +53,7 @@ python manage.py makemigrations
 python manage.py migrate
 python manage.py createsuperuser
 
+---
 
 ##🧪 Özelliklerin Kullanımı
 1. Kelime Ekleme
@@ -85,6 +87,7 @@ Harf uzunluğu sınırlı değildir (dinamik yapıdadır).
 
 Renkli geri bildirimlerle harf tahmini yapılır.
 
+---
 
 ##📁 Proje Yapısı
 
@@ -100,10 +103,11 @@ language-learning-app/
 ├─ requirements.txt
 └─ README.md
 
-
+---
 
 ##🛡 Güvenlik
 SECRET_KEY kod dışında, .env veya ortam değişkeniyle tutulur.
 
 Production’da DEBUG=False + güvenli HOST ayarları önerilir.
 
+---
