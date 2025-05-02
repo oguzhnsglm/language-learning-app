@@ -41,8 +41,11 @@ pip install -r requirements.txt
 ## 🔐 Ortam Değişkenleri
 
 export DJANGO_SECRET_KEY=my-super-secret-key
+
 export DJANGO_DEBUG=True
+
 export DJANGO_ALLOWED_HOSTS=127.0.0.1,localhost
+
 python manage.py runserver
 
 ---
