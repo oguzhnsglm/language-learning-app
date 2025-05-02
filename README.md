@@ -34,7 +34,8 @@ cd language-learning-app
 python -m venv venv            # isteğe bağlı sanal ortam
 source venv/bin/activate       # Windows: venv\Scripts\activate
 pip install -r requirements.txt
-exit
+
+```
 ---
 
 ## 🔐 Ortam Değişkenleri
