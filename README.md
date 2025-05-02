@@ -28,7 +28,7 @@ Bu Django projesi, kullanıcıların İngilizce kelimeleri **örnek cümle + gö
 ---
 
 ## ⚙️ Kurulum  
-```bash
+
 git clone https://github.com/kullanici-adi/language-learning-app.git
 cd language-learning-app
 python -m venv venv            # isteğe bağlı sanal ortam
@@ -37,7 +37,7 @@ pip install -r requirements.txt
 
 ---
 
-##🔐 Ortam Değişkenleri
+## 🔐 Ortam Değişkenleri
 
 export DJANGO_SECRET_KEY=my-super-secret-key
 export DJANGO_DEBUG=True
@@ -47,7 +47,7 @@ python manage.py runserver
 ---
 
 
-##🛠 Geliştirici Talimatları
+## 🛠 Geliştirici Talimatları
 
 python manage.py makemigrations
 python manage.py migrate
@@ -55,7 +55,7 @@ python manage.py createsuperuser
 
 ---
 
-##🧪 Özelliklerin Kullanımı
+## 🧪 Özelliklerin Kullanımı
 1. Kelime Ekleme
 Giriş yaptıktan sonra kelime ekleyebilir,
 
