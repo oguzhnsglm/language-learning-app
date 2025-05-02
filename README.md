@@ -28,13 +28,13 @@ Bu Django projesi, kullanıcıların İngilizce kelimeleri **örnek cümle + gö
 ---
 
 ## ⚙️ Kurulum  
-
+```bash
 git clone https://github.com/kullanici-adi/language-learning-app.git
 cd language-learning-app
 python -m venv venv            # isteğe bağlı sanal ortam
 source venv/bin/activate       # Windows: venv\Scripts\activate
 pip install -r requirements.txt
-
+exit
 ---
 
 ## 🔐 Ortam Değişkenleri
@@ -89,7 +89,7 @@ Renkli geri bildirimlerle harf tahmini yapılır.
 
 ---
 
-##📁 Proje Yapısı
+## 📁 Proje Yapısı
 
 language-learning-app/
 ├─ kelimeler/          # Django app
@@ -105,7 +105,7 @@ language-learning-app/
 
 ---
 
-##🛡 Güvenlik
+## 🛡 Güvenlik
 SECRET_KEY kod dışında, .env veya ortam değişkeniyle tutulur.
 
 Production’da DEBUG=False + güvenli HOST ayarları önerilir.
