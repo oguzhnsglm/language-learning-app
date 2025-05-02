@@ -56,54 +56,45 @@ python manage.py createsuperuser
 
 ---
 
-## 🧪 Özelliklerin Kullanımı
-1. Kelime Ekleme
-  Giriş yaptıktan sonra kelime ekleyebilir,
+## 🧪 Özelliklerin Kullanımı
+1. **Kelime Ekleme**  
+   - Giriş yaptıktan sonra kelime ekleyin.  
+   - Resim, ses ve örnek cümle ekleyebilirsiniz.
 
-  Kelimeye örnek cümle, ses ve resim ekleyebilirsiniz.
+2. **Quiz Modülü**  
+   - Daha önce öğrenilen kelimelerden sınav oluşturulur.  
+   - Sınav sonunda **doğru / yanlış analizi** sunulur.
 
-2. Quiz Modülü
-  Daha önce öğrenilen kelimelerden sınav oluşturulur.
+3. **Analiz Sayfası**  
+   - Genel başarı tablosu  
+   - Kelime türlerine göre (verb, noun, vb.) başarı yüzdesi  
+   - **PDF olarak çıktısı** alınabilir
 
-  Her sınav sonucunda doğru/yanlış analizi sunulur.
+4. **PDF Raporlama**  
+   - Analiz sayfasından **📄 PDF Olarak İndir** butonuyla kullanıcıya özel rapor.  
+   - Pie chart ve bar chart görselleri rapora dâhil edilir.
 
-3. Analiz Sayfası
-  Genel başarı tablosu
-
-  Kelime türlerine göre (verb, noun, vb.) başarı yüzdesi
-
-  PDF olarak çıktısı alınabilir
-
-4. PDF Raporlama
-  Analiz sayfasından 📄 PDF Olarak İndir butonu ile kullanıcıya özel analiz raporu alınabilir.
-
-  Pie chart ve bar chart görselleri dahil olur.
-
-5. Wordle Modülü
-  Wordle Bulmaca oyununda yalnızca kullanıcının doğru bildiği kelimeler kullanılır.
-
-  Her seferinde rastgele kelime seçilir.
-
-  Harf uzunluğu sınırlı değildir (dinamik yapıdadır).
-
-  Renkli geri bildirimlerle harf tahmini yapılır.
+5. **Wordle Modülü**  
+   - Yalnızca kullanıcının **doğru bildiği** kelimelerle dinamik bulmaca.  
+   - Her seferinde rastgele kelime seçilir.  
+   - Harf uzunluğu sınırsızdır (dinamik yapı).  
+   - Renkli geri bildirimlerle harf tahmini yapılır.
 
 ---
 
-## 📁 Proje Yapısı
-
+## 📁 Proje Yapısı
+```text
 language-learning-app/
-├─ kelimeler/          # Django app
-│  ├─ models.py
-│  ├─ views.py
-│  └─ templates/
-├─ ezberleme/          # Proje ayarları
-│  └─ settings.py
-├─ media/              # Yüklenen dosyalar
-├─ static/             # CSS / JS
-├─ requirements.txt
-└─ README.md
-
+├── kelimeler/            # Django app
+│   ├── models.py
+│   ├── views.py
+│   └── templates/
+├── ezberleme/            # Ana proje ayarları
+│   └── settings.py
+├── media/                # Yüklenen dosyalar
+├── static/               # CSS / JS
+├── requirements.txt
+└── README.md
 ---
 
 ## 🛡 Güvenlik
