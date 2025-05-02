@@ -95,6 +95,7 @@ language-learning-app/
 ├── static/               # CSS / JS
 ├── requirements.txt
 └── README.md
+```
 ---
 
 ## 🛡 Güvenlik
