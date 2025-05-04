@@ -38,15 +38,30 @@ pip install -r requirements.txt
 ```
 ---
 
+## ▶️ Hızlı Çalıştırma (Geliştirme Ortamı)
+Windows (CMD / PowerShell)
+```bash
+set DJANGO_SECRET_KEY=my-super-secret-key
+python manage.py runserver
+```
+macOS / Linux / WSL
+```bash
+export DJANGO_SECRET_KEY=my-super-secret-key
+python manage.py runserver
+Uygulama http://127.0.0.1:8000 adresinde çalışır.
+```
+---
+
+
 ## 🔐 Ortam Değişkenleri
 
 export DJANGO_SECRET_KEY=my-super-secret-key
 
+python manage.py runserver
+
 export DJANGO_DEBUG=True
 
 export DJANGO_ALLOWED_HOSTS=127.0.0.1,localhost
-
-python manage.py runserver
 
 ---
 
