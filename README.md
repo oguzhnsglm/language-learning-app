@@ -48,8 +48,9 @@ macOS / Linux / WSL
 ```bash
 export DJANGO_SECRET_KEY=my-super-secret-key
 python manage.py runserver
-Uygulama http://127.0.0.1:8000 adresinde çalışır.
 ```
+Uygulama http://127.0.0.1:8000 adresinde çalışır.
+
 ---
 
 
