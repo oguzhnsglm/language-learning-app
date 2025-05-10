@@ -1,5 +1,8 @@
 # 🧠 Language Learning App — Kelime Ezberleme & Wordle Tabanlı Öğrenme Sistemi
 
+> **Lisans:** MIT License  
+> **Sürüm:** v1.0.0  
+
 Bu Django projesi, kullanıcıların İngilizce kelimeleri **örnek cümle + görsel + ses** desteğiyle öğrenmesini sağlar. İçinde sınav (quiz) modu, ayrıntılı analiz & PDF çıktısı ve Wordle‑benzeri bulmaca mevcuttur.
 
 ---
@@ -24,12 +27,12 @@ Bu Django projesi, kullanıcıların İngilizce kelimeleri **örnek cümle + gö
 
 ## 🧩 Teknolojiler  
 `Python 3.9+`, `Django 4.2`, `xhtml2pdf`, `matplotlib`, `Pillow`, `SQLite3`, Vanilla JS + CSS
-
+   
 ---
 
 ## ⚙️ Kurulum  
 ```bash
-git clone https://github.com/kullanici-adi/language-learning-app.git
+git clone https://github.com/kullanici-adi/language-learning-app.git   
 cd language-learning-app
 python -m venv venv            # isteğe bağlı sanal ortam
 source venv/bin/activate       # Windows: venv\Scripts\activate
